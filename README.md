@@ -1,5 +1,14 @@
 # Crowd_count_analysis
 TEAM--ANUGYA,SHIVAAY,NISHCHAY
+
+MAIN MODEL:  Built a custom architecture using:
+Pretrained VGG16 frontend
+A dual-branch decoder to capture varied receptive fields (3×3 and 5×5)
+CBAM modules after encoding and decoding to focus the network’s attention spatially and channel-wise
+A patch-based training strategy (512×512) to efficiently train on large images and capture local density variations
+This design allowed us to extract robust features, adapt to scale variations, and produce high-fidelity density maps while maintaining memory efficiency.     
+  
+
 1. CSRNet (Congested Scene Recognition Network)
 Type: CNN-based
 Description: Uses a truncated VGG-16 frontend and dilated convolutions in the backend to maintain spatial resolution while expanding receptive field.
