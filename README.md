@@ -2,7 +2,6 @@
 TEAM--ANUGYA,SHIVAAY,NISHCHAY
 1. CSRNet (Congested Scene Recognition Network)
 Type: CNN-based
-
 Description: Uses a truncated VGG-16 frontend and dilated convolutions in the backend to maintain spatial resolution while expanding receptive field.
 Strengths: Simple yet effective; performs well on dense crowds.
 Variants You Tried:
@@ -24,14 +23,10 @@ Followed by a CBAMLayer (Channel + Spatial Attention)
 Use: Focus on relevant crowd regions; efficient and lightweight.
 
  4. Multi-Dilated CNN + CBAM (Your Latest Custom Model)
-text
-Copy
-Edit
          x
        / | \
      rate=1,2,3 → CNN stacks → concatenate → CBAM → 1x1 Conv → Density map
 Type: Multi-scale + Attention
-
 Description:
 Three parallel branches with dilation rates 1, 2, and 3
 Merged output passed through CBAM attention
