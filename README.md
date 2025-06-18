@@ -31,7 +31,7 @@ Sequential CNN layers (Conv2D → ReLU)
 Followed by a CBAMLayer (Channel + Spatial Attention)
 Use: Focus on relevant crowd regions; efficient and lightweight.
 
- 4. Multi-Dilated CNN + CBAM (Your Latest Custom Model)
+ 4. Multi-Dilated CNN + CBAM 
          x
        / | \
      rate=1,2,3 → CNN stacks → concatenate → CBAM → 1x1 Conv → Density map
@@ -63,4 +63,9 @@ Used in: Integrated into multi-dilation models and plain CNNs
 Type: Transformer-based crowd counting
 Description: Uses CNN encoder + transformer modules for global context
 Status: You’ve analyzed the architecture and asked about merging MCNN into it — not fully implemented yet.
+
+8.Transposed convolutions (also known as deconvolutions or fractionally strided convolutions) were incorporated in the
+intermediate layers of the model architecture to perform upsampling. This approach helps the network to learn spatial
+representations at a higher resolution, preserving spatial details. By integrating these layers mid-architecture, 
+we aimed to recover finer features lost during earlier downsampling stages, thereby improving overall performance.
 
