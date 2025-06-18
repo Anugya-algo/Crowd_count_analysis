@@ -1,9 +1,8 @@
-# models/cctrans.py
+
 import torch
 import torch.nn as nn
 from einops import rearrange
 
-# Simple CNN Encoder
 class EncoderCNN(nn.Module):
     def __init__(self):
         super(EncoderCNN, self).__init__()
@@ -16,9 +15,8 @@ class EncoderCNN(nn.Module):
         )
 
     def forward(self, x):
-        return self.conv(x)  # shape: (B, 256, H/2, W/2)
+        return self.conv(x) 
 
-# Transformer Block
 class TransformerBlock(nn.Module):
     def __init__(self, dim, heads=8, mlp_dim=512, dropout=0.1):
         super().__init__()
@@ -59,20 +57,17 @@ class CCTrans(nn.Module):
         )
 
     def forward(self, x):
-        feat = self.encoder(x)  # (B, 256, H/2, W/2)
-        feat = self.patch_proj(feat)  # (B, emb_dim, H/2, W/2)
-
-        # Flatten to patches
+        feat = self.encoder(x)  
+        feat = self.patch_proj(feat)  
+      
         B, C, H, W = feat.shape
-        patches = rearrange(feat, 'b c h w -> b (h w) c')  # (B, N, C)
+        patches = rearrange(feat, 'b c h w -> b (h w) c')  
 
-        # Add positional encoding
         patches = patches + self.pos_embedding[:patches.size(1)]
 
-        patches = self.transformer(patches)  # (B, N, C)
+        patches = self.transformer(patches) 
 
-        # Restore spatial dimensions
         feat = rearrange(patches, 'b (h w) c -> b c h w', h=H, w=W)
 
-        out = self.decoder(feat)  # Density map (B, 1, H, W)
+        out = self.decoder(feat)  
         return out
