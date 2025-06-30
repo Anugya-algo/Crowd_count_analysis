@@ -1,5 +1,4 @@
 # Crowd_count_analysis
-TEAM--ANUGYA,SHIVAAY,NISHCHAY
 
 MAIN MODEL:  Built a custom architecture using:
 Pretrained VGG16 frontend
